@@ -67,8 +67,12 @@ get_translate_appkey <- function() {
 #' @param to target language, i.e., the language to be translated into
 #' @return the translated sentences
 #' @examples 
-#' set_translate_option(appid = '20231211001907382', key = 'kBwJHv3WT5I7RETuJi00')
-#' translate('hello world', from = 'en', to = 'zh')
+#' library(fanyi)
+#' ## set your appid and key once in your R session
+#' #
+#' # set_translate_option(appid = 'your_appid', key = 'your_key')
+#' #
+#' # translate('hello world', from = 'en', to = 'zh')
 #' @author Guangchuang Yu 
 #' @export
 translate <- function(x, from = 'en', to = 'zh') {

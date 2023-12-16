@@ -1,5 +1,5 @@
 
-# fanyi 0.0.4
+# fanyi 0.0.5
 
 + `translate()` which is a generic interface and would expand to allow using other translators (2023-12-14, Thu)
 + `set_translate_option()` allows users to use their own appid and key and it is a must now (2023-12-13, Wed)

@@ -1,6 +1,6 @@
 Package: fanyi
 Title: Translate Words or Sentences via Online Translators
-Version: 0.0.4
+Version: 0.0.5
 Authors@R: c(
        person("Guangchuang", "Yu", 
               email = "guangchuangyu@gmail.com", 
@@ -17,9 +17,9 @@ License: Artistic-2.0
 Encoding: UTF-8
 RoxygenNote: 7.2.3
 NeedsCompilation: no
-Packaged: 2023-12-15 01:25:45 UTC; HUAWEI
+Packaged: 2023-12-16 00:29:51 UTC; HUAWEI
 Author: Guangchuang Yu [aut, cre, cph]
     (<https://orcid.org/0000-0002-6485-8781>)
 Maintainer: Guangchuang Yu <guangchuangyu@gmail.com>
 Repository: CRAN
-Date/Publication: 2023-12-15 12:20:02 UTC
+Date/Publication: 2023-12-16 00:50:02 UTC

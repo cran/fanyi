@@ -32,8 +32,12 @@ Translate query sentences
 This function use online translator API (e.g., Baidu fanyi) to translate query sentences
 }
 \examples{
-set_translate_option(appid = '20231211001907382', key = 'kBwJHv3WT5I7RETuJi00')
-translate('hello world', from = 'en', to = 'zh')
+library(fanyi)
+## set your appid and key once in your R session
+#
+# set_translate_option(appid = 'your_appid', key = 'your_key')
+#
+# translate('hello world', from = 'en', to = 'zh')
 }
 \author{
 Guangchuang Yu
