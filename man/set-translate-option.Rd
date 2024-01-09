@@ -4,14 +4,27 @@
 \alias{set_translate_option}
 \title{set_translate_option}
 \usage{
-set_translate_option(appid, key, source = "baidu")
+set_translate_option(
+  appid,
+  key,
+  source = "baidu",
+  region = "southeastasia",
+  user_dict = NULL,
+  user_model = "turbo"
+)
 }
 \arguments{
-\item{appid}{appid}
+\item{appid}{appid, "bing translate" will not use this input.}
 
 \item{key}{app key}
 
-\item{source}{translation engine, currently only 'baidu' is supported}
+\item{source}{translation engine}
+
+\item{region}{this is for bing use only, translation engine location, depends on your Azure service setting}
+
+\item{user_dict}{user defined dictionary ID, only used for 'source = "youdao"'}
+
+\item{user_model}{selected model used in for 'source = "chatglm"', one of \code{turbo}, \code{pro}, \code{standard} and \code{lite}}
 }
 \value{
 No return value, called for side effects
