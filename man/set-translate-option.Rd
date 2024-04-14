@@ -10,7 +10,7 @@ set_translate_option(
   source = "baidu",
   region = "southeastasia",
   user_dict = NULL,
-  user_model = "turbo"
+  user_model = "glm-4"
 )
 }
 \arguments{

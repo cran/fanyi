@@ -1,3 +1,10 @@
+# fanyi 0.0.7
+
++ add claims in the DESCRIPTION that this package is not affiliated with any of the online translators and we take no responsibility (2024-04-14, Sun)
++ `fanyi_has_appkey()` to test whether the appkey has set (2024-02-12, Mon)
+    - can be used in conditional examples
++ add version dependency: R >= 4.2.0 and ggfun >= 0.1.3 (2024-01-18, Thu) 
++ remove quote marks in `chatglm_translate()` output (2024-01-10, Wed)
 
 # fanyi 0.0.6
 
