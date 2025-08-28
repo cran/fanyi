@@ -2,23 +2,33 @@ citHeader("To cite fanyi in publications use:")
 
 bibentry(
     bibtype  = "article",
-    title  = "Using fanyi to assist research communities in retrieving and interpreting information",
+    title  = "Reducing language barriers, promoting information absorption, and communication using fanyi",
     author = c(
+        person("Difei", "Wang"),
+        person("Guannan", "Chen"),
+        person("Lin", "Li"),
+        person("Shaodi", "Wen"),
+        person("Zijing", "Xie"),
+        person("Xiao", "Luo"),
+        person("Li", "Zhan"),
+        person("Shuangbin", "Xu"),
+        person("Junrui", "Li"),
+        person("Rui", "Wang"),
+        person("Qianwen", "Wang"),
         person("Guangchuang", "Yu")
         ),
     year    = "2023",
-    journal = "bioRxiv",
-    volume  = "",
-    issue   = "",
+    journal = "Chinese Medical Journal",
+    volume  = "137",
+    issue   = "16",
     number  = "",
-    pages   = "",
-    doi     = "10.1101/2023.12.21.572729",
+    pages   = "1950-1956",
+    doi     = "10.1097/CM9.0000000000003242",
     PMID    = "",
-    url     = "https://www.biorxiv.org/content/10.1101/2023.12.21.572729", 
-    textVersion = paste("G Yu.",
-                        "Using fanyi to assist research communities in retrieving and interpreting information.",
-                        "bioRxiv. doi: 10.1101/2023.12.21.572729")
+    url     = "https://journals.lww.com/cmj/fulltext/2024/08200/reducing_language_barriers,_promoting_information.7.aspx", 
+    textVersion = paste("D Wang, G Chen, L Li, S Wen, Z Xie, X Luo, L Zhan, S Xu, J Li, R Wang, Q Wang, G Yu.",
+                        "Reducing language barriers, promoting information absorption, and communication using fanyi.",
+                        "Chinese Medical Journal. 2024, 137(16):1950-1956. doi: 10.1097/CM9.0000000000003242")
 
 )
-
 

@@ -26,8 +26,9 @@ get_translate_text.chatglm <- function(response) {
 #for help, visit: https://open.bigmodel.cn/dev/api#nosdk
 .chatglm_query <- function(prompt) {
   .key_info <- get_translate_appkey('chatglm')
-  user_model <- .key_info$user_model
-
+  # Don't know how to get model parameter from user input, need help#
+  #user_model <- .key_info$user_model
+  user_model <- "glm-4"
   url <- "https://open.bigmodel.cn/api/paas/v4/chat/completions"
   header <- list("alg" = "HS256",
                  "sign_type" = "SIGN")
@@ -59,26 +60,19 @@ get_translate_text.chatglm <- function(response) {
 
   body <- list("messages" = prompt,
                "model"    = user_model,
-               "stream"   = "true"
+               "stream"   = "false"
               )
   body_json <- jsonlite::toJSON(body, auto_unbox = TRUE)
   headers <- list("Content-Type" = "application/json",
                   "Authorization"= auth_header)
   
-  parser <- SSEparser$new()
   req <- httr2::request(url) |>
     httr2::req_headers(!!!headers) |>
     httr2::req_body_raw(body_json) |>
-    httr2::req_perform_stream(callback = \(x) {
-      event <- rawToChar(x)
-      parser$parse_sse(event)
-      TRUE
-    })
-  res_temp <- parser$events
-  res <- purrr::map(seq_len(length(res_temp) - 1), function(x) {
-      jsonlite::fromJSON(res_temp[[x]]$data)$choices$delta$content
-    }) |> paste(collapse = '')
-  return(res)
+    httr2::req_perform()
+
+  res_temp <- req |> resp_body_json()
+  return(res_temp$choices[[1]]$message$content)
 }
 
 .chatglm_translate_query <- function(x, from = 'en', to = 'zh') {
@@ -93,17 +87,15 @@ get_translate_text.chatglm <- function(response) {
   .prefix <- sprintf("Translate into %s", to)
   prompt <- .chatglm_prompt_translate(x, prefix = .prefix, role = 'user')
   parser <- .chatglm_query(prompt)
-  
-  # res <- paste(sapply(parser$events, \(x) x[["data"]]), collapse = '')
-  res <- .get_chatglm_data(parser, sep)
-  structure(res, class = "chatglm")
+
+  structure(parser, class = "chatglm")
 }
 
-.chatglm_summarize_query <- function(x) {
-  prompt <- .chatglm_prompt_summarize(x, role = 'user')
-  parser <- .chatglm_query(prompt)
-  .get_chatglm_data(parser)
-}
+# .chatglm_summarize_query <- function(x) {
+#   prompt <- .chatglm_prompt_summarize(x, role = 'user')
+#   parser <- .chatglm_query(prompt)
+#   .get_chatglm_data(parser)
+# }
 
 .chatglm_prompt_summarize <- function(x, prefix = "Summarize the sentences", role = 'user') {
   list(list(content = "You are a text summarizer, you can only summarize the text, never interpret it.",
@@ -132,19 +124,4 @@ get_translate_text.chatglm <- function(response) {
   }
 
   list(content = content, role = role)
-}
-
-.get_chatglm_data <- function(parser, sep = ' ') {
-  y <- sapply(parser$events, function(x) {
-    i <- rev(which(names(x) == "data"))[1] ## sometimes there are several items named with 'data', get the last one
-    if (is.na(i)) return("")
-    x[[i]]
-  })
-  y <- y[y != ""]
-  res <- paste(y, collapse = sep) |>
-    gsub("\\s+([,\\.])", "\\1", x = _) |> # remove empty space preceeding with punctuation marks
-    sub("^\"\\s*", "", x = _) |> # remove quote marks
-    sub("\\s*\"$", "", x = _)
-
-  return(res) 
 }

@@ -23,18 +23,21 @@ ydict <- function(word, web=FALSE) {
     x <- .youdao_translate(word) 
 
     url <- x$mTerminalDict$url
-    uk <- yd_format_item("\tUK: [%s]", x$basic$`uk-phonetic`)
-    us <- yd_format_item("\tUS: [%s]", x$basic$`us-phonetic`)
-    explain <- yd_format_item("\tExplains: %s", x$basic$explains[[1]])
+    # uk <- yd_format_item("\tUK: [%s]", x$basic$`uk-phonetic`)
+    # us <- yd_format_item("\tUS: [%s]", x$basic$`us-phonetic`)
+    # explain <- yd_format_item("\tExplains: %s", x$basic$explains[[1]])
+    explain <- yd_format_item("\tExplains: %s", get_translate_text.youdao(x))
     www <- yd_format_item("\tWeb: %s", url)
 
-    y <- sprintf("\n%s%s\n\n%s\n\n%s\n\n", 
-                    uk, us, explain, www)
-
+    # y <- sprintf("\n%s%s\n\n%s\n\n%s\n\n", 
+    #                 uk, us, explain, www)
+    y <- sprintf("\n%s\n\n%s\n\n", 
+                    explain, www)
     cat(y)
     if (web && !is.null(url)) {
         utils::browseURL(url)
     }
+    invisible(x)
 }
 
 yd_format_item <- function(format, item) {
