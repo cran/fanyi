@@ -1,6 +1,6 @@
 Package: fanyi
 Title: Translate Words or Sentences via Online Translators
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
        person("Guangchuang", "Yu", 
               email = "guangchuangyu@gmail.com", 
@@ -33,11 +33,11 @@ BugReports: https://github.com/YuLab-SMU/fanyi/issues
 Encoding: UTF-8
 RoxygenNote: 7.3.3
 NeedsCompilation: no
-Packaged: 2026-01-18 09:08:38 UTC; HUAWEI
+Packaged: 2026-02-04 09:01:39 UTC; HUAWEI
 Author: Guangchuang Yu [aut, cre, cph] (ORCID:
     <https://orcid.org/0000-0002-6485-8781>),
   Guannan Chen [ctb],
   Difei Wang [ctb]
 Maintainer: Guangchuang Yu <guangchuangyu@gmail.com>
 Repository: CRAN
-Date/Publication: 2026-01-18 10:00:02 UTC
+Date/Publication: 2026-02-04 09:30:02 UTC
